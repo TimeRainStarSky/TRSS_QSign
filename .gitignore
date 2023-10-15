@@ -1,0 +1,5 @@
+QQVersion
+txlib/*/.system_android_l2
+txlib/*/stderr
+txlib/*/stdin
+txlib/*/stdout
