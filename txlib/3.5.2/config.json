@@ -3,6 +3,8 @@
     "host": "0.0.0.0",
     "port": 2535
   },
+  "share_token": true,
+  "count": 1,
   "key": "TimeRainStarSky",
   "auto_register": true,
   "protocol": {
@@ -14,6 +16,7 @@
   "unidbg": {
     "dynarmic": true,
     "unicorn": false,
+    "kvm": false,
     "debug": false
   }
 }

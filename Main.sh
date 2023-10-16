@@ -19,17 +19,35 @@ qss_setgcqver(){ echo -n '{
 }">"$1.json";}
 
 qss_gcqver(){ case "$QQVersion" in
-"8.9.63")sort_version_name="8.9.63.11390"
-  app_id="537164840"
-  pad_app_id="537164888"
-  build_time="1685069178"
-  sdk_version="6.0.0.2546"
-  qua="V1_AND_SQ_8.9.63_4194_YYB_D";;
-"8.9.68")sort_version_name="8.9.68.11565"
-  app_id="537168313"
-  pad_app_id="537168361"
-  build_time="1687254022"
-  sdk_version="6.0.0.2549"
+"8.9.83")sort_version_name="8.9.83.12605"
+  app_id="537178646"
+  pad_app_id="537178685"
+  build_time="1691565978"
+  sdk_version="6.0.0.2554"
+  qua="V1_AND_SQ_8.9.83_4680_YYB_D";;
+"8.9.80")sort_version_name="8.9.80.12440"
+  app_id="537176863"
+  pad_app_id="537176902"
+  build_time="1691565978"
+  sdk_version="6.0.0.2554"
+  qua="V1_AND_SQ_8.9.80_4614_YYB_D";;
+"8.9.78")sort_version_name="8.9.78.12275"
+  app_id="537175315"
+  pad_app_id="537175354"
+  build_time="1691565978"
+  sdk_version="6.0.0.2554"
+  qua="V1_AND_SQ_8.9.78_4548_YYB_D";;
+"8.9.76")sort_version_name="8.9.76.12115"
+  app_id="537173477"
+  pad_app_id="537173525"
+  build_time="1691565978"
+  sdk_version="6.0.0.2554"
+  qua="V1_AND_SQ_8.9.76_4484_YYB_D";;
+"8.9.73")sort_version_name="8.9.73.11945"
+  app_id="537171689"
+  pad_app_id="537171737"
+  build_time="1690371091"
+  sdk_version="6.0.0.2553"
   qua="V1_AND_SQ_8.9.73_4416_YYB_D";;
 "8.9.71")sort_version_name="8.9.71.11735"
   app_id="537170024"
@@ -37,12 +55,18 @@ qss_gcqver(){ case "$QQVersion" in
   build_time="1688720082"
   sdk_version="6.0.0.2551"
   qua="V1_AND_SQ_8.9.71_4332_YYB_D";;
-"8.9.73")sort_version_name="8.9.73.11945"
-  app_id="537171689"
-  pad_app_id="537171737"
-  build_time="1690371091"
-  sdk_version="6.0.0.2553"
-  qua="V1_AND_SQ_8.9.73_4416_YYB_D";;
+"8.9.68")sort_version_name="8.9.68.11565"
+  app_id="537168313"
+  pad_app_id="537168361"
+  build_time="1687254022"
+  sdk_version="6.0.0.2549"
+  qua="V1_AND_SQ_8.9.68_4264_YYB_D";;
+"8.9.63")sort_version_name="8.9.63.11390"
+  app_id="537164840"
+  pad_app_id="537164888"
+  build_time="1685069178"
+  sdk_version="6.0.0.2546"
+  qua="V1_AND_SQ_8.9.63_4194_YYB_D";;
 *)msgbox "go-cqhttp 不支持该版本";return
 esac
 cd "$DIR/go-cqhttp"
@@ -59,19 +83,27 @@ msgbox "账号 $GCQDir 写入版本 $QQVersion 成功";}
 
 qss_version(){ [ -n "$QQVersion" ]&&[ -d "txlib/$QQVersion" ]||{
 Choose="$(menubox "- 请选择 QQ 版本"\
-  1 "QQ 8.9.63"\
-  2 "QQ 8.9.68"\
-  3 "QQ 8.9.71"\
-  4 "QQ 8.9.73"\
-  5 "TIM 3.5.1"\
-  6 "TIM 3.5.2")"||return
+  1 "QQ 8.9.83"\
+  2 "QQ 8.9.80"\
+  3 "QQ 8.9.78"\
+  4 "QQ 8.9.76"\
+  5 "QQ 8.9.73"\
+  6 "QQ 8.9.71"\
+  7 "QQ 8.9.68"\
+  8 "QQ 8.9.63"\
+  9 "TIM 3.5.2"\
+  10 "TIM 3.5.1")"||return
 case "$Choose" in
-  1)QQVersion=8.9.63;;
-  2)QQVersion=8.9.68;;
-  3)QQVersion=8.9.71;;
-  4)QQVersion=8.9.73;;
-  5)QQVersion=3.5.1;;
-  6)QQVersion=3.5.2
+  1)QQVersion=8.9.83;;
+  2)QQVersion=8.9.80;;
+  3)QQVersion=8.9.78;;
+  4)QQVersion=8.9.76;;
+  5)QQVersion=8.9.73;;
+  6)QQVersion=8.9.71;;
+  7)QQVersion=8.9.68;;
+  8)QQVersion=8.9.63;;
+  9)QQVersion=3.5.2;;
+  10)QQVersion=3.5.1
 esac
 echo -n "$QQVersion">QQVersion
 yesnobox "是否写入 go-cqhttp"&&qss_gcqver
@@ -81,7 +113,7 @@ qss_start(){ tmux_start_quiet QSignServer
 until curl http://localhost:2535;do sleep 3;done
 tmux selectw -l;}
 
-qss_menu(){ Choose="$(menubox "QSignServer 1.1.9-$QQVersion (202309020)"\
+qss_menu(){ Choose="$(menubox "QSignServer 1.1.9-$QQVersion (202310160)"\
   1 "打开 QSignServer"\
   2 "启动 QSignServer"\
   3 "停止 QSignServer"\
