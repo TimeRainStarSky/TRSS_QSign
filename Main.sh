@@ -19,6 +19,12 @@ qss_setgcqver(){ echo -n '{
 }">"$1.json";}
 
 qss_gcqver(){ case "$QQVersion" in
+"8.9.85")sort_version_name="8.9.85.12820"
+  app_id="537180568"
+  pad_app_id="537180607"
+  build_time="1697015435"
+  sdk_version="6.0.0.2556"
+  qua="V1_AND_SQ_8.9.85_4766_YYB_D";;
 "8.9.83")sort_version_name="8.9.83.12605"
   app_id="537178646"
   pad_app_id="537178685"
@@ -83,27 +89,29 @@ msgbox "账号 $GCQDir 写入版本 $QQVersion 成功";}
 
 qss_version(){ [ -n "$QQVersion" ]&&[ -d "txlib/$QQVersion" ]||{
 Choose="$(menubox "- 请选择 QQ 版本"\
-  1 "QQ 8.9.83"\
-  2 "QQ 8.9.80"\
-  3 "QQ 8.9.78"\
-  4 "QQ 8.9.76"\
-  5 "QQ 8.9.73"\
-  6 "QQ 8.9.71"\
-  7 "QQ 8.9.68"\
-  8 "QQ 8.9.63"\
-  9 "TIM 3.5.2"\
-  10 "TIM 3.5.1")"||return
+  1 "QQ 8.9.85"\
+  2 "QQ 8.9.83"\
+  3 "QQ 8.9.80"\
+  4 "QQ 8.9.78"\
+  5 "QQ 8.9.76"\
+  6 "QQ 8.9.73"\
+  7 "QQ 8.9.71"\
+  8 "QQ 8.9.68"\
+  9 "QQ 8.9.63"\
+  10 "TIM 3.5.2"\
+  11 "TIM 3.5.1")"||return
 case "$Choose" in
-  1)QQVersion=8.9.83;;
-  2)QQVersion=8.9.80;;
-  3)QQVersion=8.9.78;;
-  4)QQVersion=8.9.76;;
-  5)QQVersion=8.9.73;;
-  6)QQVersion=8.9.71;;
-  7)QQVersion=8.9.68;;
-  8)QQVersion=8.9.63;;
-  9)QQVersion=3.5.2;;
-  10)QQVersion=3.5.1
+  1)QQVersion=8.9.85;;
+  2)QQVersion=8.9.83;;
+  3)QQVersion=8.9.80;;
+  4)QQVersion=8.9.78;;
+  5)QQVersion=8.9.76;;
+  6)QQVersion=8.9.73;;
+  7)QQVersion=8.9.71;;
+  8)QQVersion=8.9.68;;
+  9)QQVersion=8.9.63;;
+  10)QQVersion=3.5.2;;
+  11)QQVersion=3.5.1
 esac
 echo -n "$QQVersion">QQVersion
 yesnobox "是否写入 go-cqhttp"&&qss_gcqver
@@ -113,7 +121,7 @@ qss_start(){ tmux_start_quiet QSignServer
 until curl http://localhost:2535;do sleep 3;done
 tmux selectw -l;}
 
-qss_menu(){ Choose="$(menubox "QSignServer 1.1.9-$QQVersion (202310160)"\
+qss_menu(){ Choose="$(menubox "QSignServer 1.1.9-$QQVersion (202310180)"\
   1 "打开 QSignServer"\
   2 "启动 QSignServer"\
   3 "停止 QSignServer"\
