@@ -126,7 +126,7 @@ yesnobox "是否写入 go-cqhttp"&&qss_gcqver
 cd "$HOME/QSignServer";};}
 
 qss_start(){ tmux_start_quiet QSignServer
-until curl http://localhost:2535;do sleep 3;done
+until curl http://localhost:2535;do sleep 3;echo -n "[F";done
 tmux selectw -l;}
 
 qss_menu(){ Choose="$(menubox "QSignServer 1.1.9-$QQVersion (202311070)"\
